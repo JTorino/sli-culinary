@@ -1,1 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Culinary Entrepreneurship &amp; Digital Skills Program — STRIVELABS INITIATIVE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Tenor+Sans&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--green:#2F7D4F;--green-deep:#1B3A2A;--green-soft:#5C9B7A;--gold:#B8943C;--gold-soft:#D4B872;--sand:#F4EFE6;--paper:#FAFAF7;--paper-warm:#F8F4EC;--ink:#1A1A1A;--ink-soft:#4A4A4A;--rule:#C7D6CC;--line:rgba(26,26,26,0.12);--serif:"EB Garamond",Georgia,serif;--sans:"Manrope",-apple-system,BlinkMacSystemFont,sans-serif;--label:"Tenor Sans","Manrope",sans-serif;--nav-h:106px;--nav-h-mobile:60px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.65;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;height:100%;overflow:hidden}
+a{color:inherit;text-decoration:none}
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(27,58,42,0.98);border-bottom:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.site-nav__inner{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 22px 12px;height:var(--nav-h);gap:18px}
+.nav-logo{font-family:var(--label);font-size:0.845rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--paper);white-space:nowrap;flex-shrink:0;display:flex;flex-direction:column;align-items:center;line-height:1.3;gap:1px}
+.nav-logo .nav-logo__brand{color:var(--gold-soft)}
+.nav-logo .nav-logo__sub{font-size:0.74rem;letter-spacing:0.24em;color:rgba(250,250,247,0.92)}
+.nav-toggle{display:none}
+.nav-links{display:flex;gap:28px;flex-wrap:wrap;align-items:center;justify-content:center}
+.nav-links a{display:flex;align-items:center;justify-content:center;font-family:var(--label);font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(250,250,247,0.84);padding:8px 0;border-radius:2px;cursor:pointer;transition:color 150ms,background 150ms;white-space:nowrap}
+.nav-links a:hover{color:var(--paper);background:rgba(255,255,255,0.1)}
+.nav-links a.active-page{color:var(--gold-soft)}
+.nav-links a.apply-btn{color:var(--paper);border:1px solid var(--gold-soft);padding:8px 24px;margin-left:4px}
+.nav-links a.apply-btn:hover{background:var(--gold);border-color:var(--gold)}
+.page-wrap{padding-top:var(--nav-h);height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
 
+/* ---- Mobile navigation ---- */
+@media(max-width:860px){
+  .site-nav__inner{flex-direction:row;justify-content:space-between;align-items:center;height:var(--nav-h-mobile);padding:0 18px;gap:12px}
+  .nav-logo{font-size:0.74rem;letter-spacing:0.16em;align-items:flex-start}
+  .nav-logo .nav-logo__sub{font-size:0.62rem;letter-spacing:0.2em}
+  .nav-toggle{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:10px;background:transparent;border:0;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+  .nav-toggle span{display:block;height:2px;width:100%;background:var(--paper);border-radius:2px;transition:transform 220ms ease,opacity 180ms ease}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .nav-links{position:absolute;top:var(--nav-h-mobile);left:0;right:0;flex-direction:column;flex-wrap:nowrap;gap:0;align-items:stretch;background:rgba(27,58,42,0.99);border-top:1px solid rgba(255,255,255,0.1);max-height:0;overflow:hidden;transition:max-height 280ms ease}
+  .site-nav.open .nav-links{max-height:calc(100vh - var(--nav-h-mobile));overflow-y:auto;box-shadow:0 12px 24px rgba(0,0,0,0.25)}
+  .nav-links a{justify-content:flex-start;width:100%;min-height:52px;padding:14px 22px;font-size:0.9rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+  .nav-links a:hover{background:rgba(255,255,255,0.06)}
+  .nav-links a.apply-btn{border:0;border-bottom:1px solid rgba(255,255,255,0.08);margin-left:0;color:var(--gold-soft)}
+  .nav-links a.apply-btn:hover{background:var(--gold);color:var(--paper)}
+  .page-wrap{padding-top:var(--nav-h-mobile)}
+}
+
+.page-section{display:none}.page-section.active{display:block}
+.hero{position:relative;background:var(--green-deep);overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--paper);padding:88px 24px;text-align:center;min-height:480px}
+.hero__bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.hero__overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,58,42,0.45) 0%,rgba(27,58,42,0.75) 100%)}
+.hero__content{position:relative;z-index:2;max-width:800px}
+.eyebrow{font-family:var(--label);font-size:0.825rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold-soft);display:inline-block;margin-bottom:16px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.325rem,5vw,4.325rem);line-height:1.06;color:var(--paper);margin-bottom:22px}
+.hero .lede{font-family:var(--serif);font-size:clamp(1.125rem,1.6vw,1.375rem);font-style:italic;color:rgba(250,250,247,0.9);line-height:1.55;max-width:640px;margin:0 auto 30px}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center}
+.btn{display:inline-block;font-family:var(--label);font-size:0.785rem;letter-spacing:0.2em;text-transform:uppercase;padding:13px 26px;border:1px solid currentColor;transition:all 180ms;cursor:pointer}
+.btn--gold{background:var(--gold);color:var(--paper);border-color:var(--gold)}.btn--gold:hover{background:var(--gold-soft);border-color:var(--gold-soft)}
+.btn--light{color:var(--paper)}.btn--light:hover{background:var(--paper);color:var(--green-deep)}
+.btn--dark{color:var(--green-deep)}.btn--dark:hover{background:var(--green-deep);color:var(--paper)}
+.container{width:100%;max-width:1140px;margin:0 auto;padding:0 26px}
+.container-narrow{max-width:800px;margin:0 auto;padding:0 26px}
+section{padding:clamp(48px,8vw,104px) 0}
+section.tight{padding:clamp(32px,4.5vw,64px) 0}
+section.sand{background:var(--sand)}section.paper-warm{background:var(--paper-warm)}
+section.deep{background:var(--green-deep);color:var(--paper)}
+section.deep .display{color:var(--paper)}section.deep .slede{color:rgba(250,250,247,0.85)}
+section.deep .eyebrow{color:var(--gold-soft)}section.deep p{color:rgba(250,250,247,0.88)}
+section.deep strong{color:var(--gold-soft)}
+.display{font-family:var(--serif);font-weight:400;letter-spacing:-0.01em;line-height:1.06;color:var(--green-deep)}
+.h-xl{font-size:clamp(2.525rem,5vw,4.325rem)}.h-lg{font-size:clamp(2.025rem,3.8vw,3.325rem)}
+.h-md{font-size:clamp(1.675rem,2.8vw,2.525rem)}.h-sm{font-size:clamp(1.425rem,1.9vw,1.925rem)}
+.eyebrow-dark{font-family:var(--label);font-size:0.825rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--green-deep);display:inline-block}
+.eyebrow-gold{font-family:var(--label);font-size:0.825rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold);display:inline-block}
+.slede{font-family:var(--serif);font-size:clamp(1.125rem,1.5vw,1.375rem);font-style:italic;line-height:1.55;color:var(--ink-soft)}
+p{margin-bottom:1em;max-width:62ch}p:last-child{margin-bottom:0}
+strong{font-weight:500;color:var(--green-deep)}
+.ltag{font-family:var(--label);letter-spacing:0.17em;text-transform:uppercase;font-size:0.945rem}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fact{padding:30px 18px;text-align:center;border-right:1px solid var(--line)}.fact:last-child{border-right:none}
+.fact:nth-child(2){border-right:none}.fact:nth-child(1),.fact:nth-child(2){border-bottom:1px solid var(--line)}
+@media(min-width:560px){.facts{grid-template-columns:repeat(4,1fr)}.fact:nth-child(2){border-right:1px solid var(--line)}.fact:nth-child(1),.fact:nth-child(2){border-bottom:none}}
+.fact__big{font-family:var(--serif);font-size:clamp(1.825rem,3.2vw,2.825rem);color:var(--green-deep);display:block;margin-bottom:6px;line-height:1}
+.fact__label{font-family:var(--label);font-size:0.785rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft)}
+.features{display:grid;grid-template-columns:1fr;gap:36px}
+@media(min-width:600px){.features{grid-template-columns:repeat(3,1fr)}}
+.feature__num{font-family:var(--serif);font-size:1.125rem;font-weight:500;color:var(--gold);letter-spacing:0.08em;margin-bottom:12px;display:block}
+.feature h3{font-family:var(--serif);font-weight:500;font-size:1.425rem;margin-bottom:10px;color:var(--green-deep);line-height:1.25}
+.feature p{font-size:1.055rem;color:var(--ink-soft)}
+.split{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
+@media(min-width:740px){.split{grid-template-columns:1fr 1fr;gap:64px}}
+.split__image{aspect-ratio:4/5;background-size:cover;background-position:center;background-color:var(--sand)}
+.split__text .eyebrow-gold{margin-bottom:13px;display:block}.split__text h2{margin-bottom:18px}
+.months{display:flex;flex-direction:column}
+.month{display:grid;grid-template-columns:1fr;gap:22px;padding:48px 0;border-top:1px solid var(--line)}
+.month:last-child{border-bottom:1px solid var(--line)}
+@media(min-width:720px){.month{grid-template-columns:170px 1fr 1fr;gap:48px}}
+.month__num{font-family:var(--serif);font-style:italic;font-size:1.125rem;color:var(--gold);font-weight:400}
+.month__title{font-family:var(--serif);font-weight:500;font-size:1.775rem;color:var(--green-deep);line-height:1.2;margin-bottom:11px}
+.month__tagline{font-family:var(--serif);font-style:italic;color:var(--ink-soft);font-size:1.175rem;margin-bottom:15px}
+.month__body{font-size:1.055rem}.month__body p{margin-bottom:0.85em}
+.book{display:grid;grid-template-columns:1fr;gap:22px;padding:38px 0;border-top:1px solid var(--line)}
+.book:last-child{border-bottom:1px solid var(--line)}
+@media(min-width:540px){.book{grid-template-columns:150px 1fr;gap:44px}}
+.book__num{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:1.125rem}
+.book__title{font-family:var(--serif);font-weight:500;font-size:1.575rem;color:var(--green-deep);margin-bottom:4px}
+.book__author{font-family:var(--label);font-size:0.795rem;letter-spacing:0.17em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:13px}
+.book__where{font-family:var(--label);font-size:0.765rem;letter-spacing:0.17em;text-transform:uppercase;color:var(--gold);margin-top:11px;display:inline-block}
+ul.checks{list-style:none;display:flex;flex-direction:column;gap:11px}
+ul.checks li{position:relative;padding-left:24px;font-size:1.075rem;line-height:1.55}
+ul.checks li::before{content:"";position:absolute;left:0;top:11px;width:13px;height:1px;background:var(--gold)}
+.detail-list{list-style:none}
+.detail-list li{border-top:1px solid var(--line);padding:22px 0}
+.detail-list li:last-child{border-bottom:1px solid var(--line)}
+.detail-list h4{font-family:var(--serif);font-weight:500;font-size:1.275rem;color:var(--green-deep);margin-bottom:7px}
+.detail-list p{font-size:1.055rem;color:var(--ink-soft)}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:36px}
+@media(min-width:620px){.contact-grid{grid-template-columns:1fr 1fr;gap:64px}}
+.contact-block h4{font-family:var(--label);font-size:0.865rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:9px}
+.contact-block p{font-size:1.065rem}
+.contact-block a{color:var(--green-deep);border-bottom:1px solid var(--gold);transition:color 160ms}
+.contact-block a:hover{color:var(--gold)}
+.profile-grid{display:grid;grid-template-columns:1fr;gap:34px}
+@media(min-width:500px){.profile-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:780px){.profile-grid{grid-template-columns:1fr 1fr 1fr}}
+.profile{display:flex;flex-direction:column;gap:13px}
+.profile__photo{aspect-ratio:3/4;background:var(--sand);background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center}
+.ph-label{font-family:var(--label);letter-spacing:0.2em;color:var(--green-soft);font-size:0.795rem}
+.profile__name{font-family:var(--serif);font-size:1.375rem;font-weight:500;color:var(--green-deep)}
+.profile__role{font-family:var(--label);font-size:0.795rem;letter-spacing:0.17em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.profile__bio{font-size:1.025rem;color:var(--ink-soft)}
+.sph{padding:64px 24px 72px;text-align:center;position:relative;overflow:hidden}
+.sph__bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.sph__overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,58,42,0.55) 0%,rgba(27,58,42,0.82) 100%)}
+.sph__c{position:relative;z-index:2}
+.sph .eyebrow{color:var(--gold-soft);margin-bottom:14px}
+.sph h1{font-family:var(--serif);font-weight:400;color:var(--paper);font-size:clamp(2.225rem,4.5vw,3.925rem);line-height:1.06}
+.site-footer{background:var(--green-deep);color:rgba(250,250,247,0.78);padding:60px 0 30px}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:36px;margin-bottom:44px}
+@media(min-width:620px){.footer-grid{grid-template-columns:2fr 1fr 1fr 1fr;gap:44px}}
+.site-footer h5{font-family:var(--label);font-size:0.795rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:15px;font-weight:400}
+.logo-f{color:var(--paper);font-family:var(--label);font-size:0.955rem;letter-spacing:0.19em;text-transform:uppercase;margin-bottom:13px;display:block}
+.logo-f span{color:var(--gold-soft)}
+.site-footer p{font-size:0.985rem;line-height:1.7;margin-bottom:0.9em}
+.site-footer ul{list-style:none}
+.site-footer ul li{margin-bottom:8px;font-size:0.985rem}
+.site-footer ul li a{color:rgba(250,250,247,0.78);border-bottom:1px solid transparent;transition:border-color 160ms;cursor:pointer}
+.site-footer ul li a:hover{border-bottom-color:var(--gold-soft)}
+.footer-bottom{border-top:1px solid rgba(250,250,247,0.15);padding-top:19px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:0.795rem;font-family:var(--label);letter-spacing:0.11em;color:rgba(250,250,247,0.45)}
+</style>
+</head>
+<body>
+
+<nav class="site-nav" id="siteNav" role="navigation">
+  <div class="site-nav__inner">
+    <span class="nav-logo"><span class="nav-logo__brand">STRIVELABS</span><span class="nav-logo__sub">CULINARY &times; DIGITAL</span></span>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a id="nav-home" onclick="showPage('home')">Home</a>
+      <a id="nav-program" onclick="showPage('program')">Program</a>
+      <a id="nav-curriculum" onclick="showPage('curriculum')">Curriculum</a>
+      <a id="nav-books" onclick="showPage('books')">Books &amp; Media</a>
+      <a id="nav-team" onclick="showPage('team')">Faculty</a>
+      <a id="nav-visits" onclick="showPage('visits')">Site Visits</a>
+      <a id="nav-capstone" onclick="showPage('capstone')">Capstone</a>
+      <a id="nav-contact" onclick="showPage('contact')">Contact</a>
+      <a id="nav-apply" onclick="showPage('apply')" class="apply-btn">Apply</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+<!-- HOME -->
+<div id="page-home" class="page-section active">
+<section class="hero">
+  <div class="hero__bg" style="background-image:url('https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1600&q=80')"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <span class="eyebrow">STRIVELABS INITIATIVE &middot; KIGALI</span>
+    <h1>Culinary Entrepreneurship<br><em>&amp;</em> Digital Skills Program</h1>
+    <p class="lede">A six-month program for graduates of Rwandan culinary schools, built around real markets, real mentors, and a real soft launch on the final day.</p>
+    <div class="btn-row">
+      <a onclick="showPage('apply')" class="btn btn--gold">Apply for the next cohort</a>
+      <a onclick="showPage('program')" class="btn btn--light">How it works</a>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <span class="ltag" style="color:var(--green)">An invitation</span>
+    <h2 class="display h-lg" style="margin:14px 0 18px">Built for people who already know how to cook.</h2>
+    <p class="slede" style="margin-bottom:18px">You graduated from a Rwandan culinary school. You can run a station. The next thing you want is your own.</p>
+    <p>This six-month program is for that next step. We teach what comes after the kitchen technique: cost a menu, source ingredients, register a business, lead a team, launch.</p>
+  </div>
+</section>
+<section class="sand">
+  <div class="container">
+    <div class="features">
+      <div class="feature"><span class="feature__num">&mdash; 01</span><h3>Real numbers, real markets</h3><p>Cost menus with prices you bought at Kimironko this morning. Negotiate with a real supplier in front of the cohort.</p></div>
+      <div class="feature"><span class="feature__num">&mdash; 02</span><h3>Mentors who own real places</h3><p>Each student is paired with a working Kigali food entrepreneur. One-on-one, once a month, for six months.</p></div>
+      <div class="feature"><span class="feature__num">&mdash; 03</span><h3>A real soft launch</h3><p>Pitch to a panel in the morning. Serve twenty-five guests in the afternoon. Leave with a portfolio.</p></div>
+    </div>
+  </div>
+</section>
+<section class="tight">
+  <div class="container">
+    <div class="facts">
+      <div class="fact"><span class="fact__big">6 mo</span><span class="fact__label">24 weeks of structured learning</span></div>
+      <div class="fact"><span class="fact__big">8</span><span class="fact__label">Students per intake &mdash; two cohorts of four</span></div>
+      <div class="fact"><span class="fact__big">4</span><span class="fact__label">Required books &middot; plus mentorship &amp; labs</span></div>
+      <div class="fact"><span class="fact__big">$1,000</span><span class="fact__label">Capstone seed grant on completion</span></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="split">
+      <div class="split__image" style="background-image:url('https://images.unsplash.com/photo-1574316071802-0d684efa7bf5?auto=format&fit=crop&w=900&q=80')"></div>
+      <div class="split__text">
+        <span class="eyebrow-gold">Month 02 &middot; Costing &amp; sourcing</span>
+        <h2 class="display h-md">The single most important number in food.</h2>
+        <p>Get it right or be quietly bankrupt. We cost ten menu items at real Kigali supplier prices, build a twelve-month sourcing calendar, and run real supplier negotiations during class.</p>
+        <p>Woven in: nutrition and allergen literacy across Weeks 7 and 8 &mdash; designing menus for guests with allergies, and balanced plates for children, athletes, and elderly customers.</p>
+        <a onclick="showPage('curriculum')" class="btn btn--dark" style="margin-top:8px;display:inline-block">See the full curriculum</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sand">
+  <div class="container">
+    <div class="split">
+      <div class="split__text">
+        <span class="eyebrow-gold">The mentor pairing</span>
+        <h2 class="display h-md">Perspective from inside a real business.</h2>
+        <p>Each cohort is paired with eight industry mentors &mdash; working chefs, restaurant owners, food product founders, hotel F&amp;B managers, packaging suppliers. One mentor per student, monthly meetings in the mentor's place of work, for the full six months.</p>
+        <p>Mentors are not paid. They give time because they remember being where you are.</p>
+        <a onclick="showPage('team')" class="btn btn--dark" style="margin-top:8px;display:inline-block">Meet the team</a>
+      </div>
+      <div class="split__image" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80')"></div>
+    </div>
+  </div>
+</section>
+<section class="deep">
+  <div class="container-narrow" style="text-align:center">
+    <span class="eyebrow">Next cohort</span>
+    <h2 class="display h-lg" style="margin:18px 0 20px">Applications are open.</h2>
+    <p class="slede" style="margin:0 auto 26px;max-width:560px">The application takes about thirty minutes. We respond within two weeks.</p>
+    <div class="btn-row">
+      <a onclick="showPage('apply')" class="btn btn--gold">Start your application</a>
+      <a onclick="showPage('program')" class="btn btn--light">Read the program details</a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><span class="logo-f"><span>STRIVELABS</span> &middot; CULINARY &times; DIGITAL</span><p>A six-month program for graduates of Rwandan culinary schools. Built and run by STRIVELABS INITIATIVE in Kigali.</p><p style="font-size:0.925rem;color:rgba(250,250,247,0.5);margin-top:14px">Kigali, Rwanda</p></div><div><h5>Program</h5><ul><li><a onclick="showPage('program')">How it works</a></li><li><a onclick="showPage('curriculum')">Curriculum</a></li><li><a onclick="showPage('books')">Books &amp; media</a></li><li><a onclick="showPage('team')">Faculty &amp; mentors</a></li></ul></div><div><h5>Get involved</h5><ul><li><a onclick="showPage('apply')">Apply as a student</a></li><li><a onclick="showPage('team')">Become a mentor</a></li><li><a onclick="showPage('visits')">Site visits</a></li><li><a onclick="showPage('capstone')">Capstone showcase</a></li></ul></div><div><h5>Contact</h5><ul><li><a href="mailto:info@strivelabs.org">info@strivelabs.org</a></li><li>Mon&ndash;Fri, 8am&ndash;6pm CAT</li><li><a onclick="showPage('contact')">Visit us</a></li></ul></div></div><div class="footer-bottom"><span>&copy; STRIVELABS INITIATIVE &mdash; Kigali, Rwanda</span><span>Culinary Entrepreneurship &amp; Digital Skills Program</span></div></div></footer>
+</div>
+
+<!-- PROGRAM -->
+<div id="page-program" class="page-section">
+<div class="sph"><div class="sph__bg" style="background-image:url('https://images.unsplash.com/photo-1495195134817-aeb325a55b65?auto=format&fit=crop&w=1600&q=80')"></div><div class="sph__overlay"></div><div class="sph__c"><span class="eyebrow">The program</span><h1>How the program works.</h1></div></div>
+<section><div class="container-narrow"><span class="eyebrow-dark">Who this is for</span><h2 class="display h-md" style="margin:14px 0 20px">A graduate of a Rwandan technical culinary school who wants to launch or manage a restaurant within the next twenty-four months.</h2><p class="slede" style="margin-bottom:20px">You probably:</p><ul class="checks"><li>Have one to five years of professional kitchen experience.</li><li>Cook to a professional standard already.</li><li>Have a business idea, even if rough.</li><li>Want to own the business eventually, not just work in it.</li><li>Can commit to five days a week for six months.</li></ul></div></section>
+<section class="sand"><div class="container"><div class="split"><div class="split__image" style="background-image:url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80')"></div><div class="split__text"><span class="eyebrow-gold">Cohort structure</span><h2 class="display h-md">Eight students per intake. Four per session.</h2><p>Each intake admits eight students, split into two cohorts of four. The morning cohort runs 8 AM &ndash; 1 PM; the afternoon cohort runs 1 PM &ndash; 6 PM. Same content, same facilitators, same labs.</p><p>Cohort size is small on purpose: four students per session means real attention and real relationships.</p></div></div></div></section>
+<section><div class="container"><div class="split"><div class="split__text"><span class="eyebrow-gold">Weekly rhythm</span><h2 class="display h-md">Same five-day pattern every week.</h2><p style="margin-bottom:16px">Content changes; rhythm does not.</p><ul class="detail-list"><li><h4>Monday &mdash; Digital Fluency Lab</h4><p>Computer, AI, and spreadsheet skills used in a real restaurant.</p></li><li><h4>Tuesday &mdash; Session 1</h4><p>Lecture and discussion on the week's main topic.</p></li><li><h4>Wednesday &mdash; Session 2</h4><p>Second lecture, deeper into the same topic.</p></li><li><h4>Thursday &mdash; Service Lab</h4><p>Book club and hospitality practice.</p></li><li><h4>Friday &mdash; Main Lab</h4><p>Practical kitchen work, prep service, or capstone build.</p></li></ul></div><div class="split__image" style="background-image:url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80')"></div></div></div></section>
+<section class="paper-warm"><div class="container-narrow"><span class="eyebrow-dark">Throughout the program</span><h2 class="display h-md" style="margin:14px 0 20px">Plus the rituals that hold a six-month program together.</h2><ul class="checks"><li><strong>Quizzes</strong> every two weeks.</li><li><strong>Capstone milestones</strong> at the end of each month.</li><li><strong>Mentorship</strong> &mdash; one-on-one with assigned industry mentor, monthly.</li><li><strong>Recurring journals</strong> &mdash; Daily Meeze, Service Journal.</li></ul></div></section>
+<section><div class="container-narrow"><span class="eyebrow-dark">What you do, not just learn</span><h2 class="display h-md" style="margin:14px 0 20px">By the end you will have:</h2><ul class="checks"><li>Registered (or fully drafted) a real business with RDB.</li><li>Built a unit-economics model in Google Sheets.</li><li>Costed ten menu items at real Kigali supplier prices.</li><li>Negotiated face-to-face with at least one real supplier.</li><li>Designed a brand identity, a trilingual menu, and thirty days of social media content.</li><li>Run prep service for two real outside events.</li><li>Completed Date Code Genie food-safety certification.</li><li>Drafted a HACCP plan for your capstone.</li><li>Pitched your business to a panel of industry experts.</li><li>Hosted a real soft-launch event with twenty-five guests on the final day.</li></ul></div></section>
+<section class="deep"><div class="container"><div class="split"><div class="split__image" style="background-image:url('https://images.unsplash.com/photo-1495195134817-aeb325a55b65?auto=format&fit=crop&w=900&q=80')"></div><div class="split__text"><span class="eyebrow">Cost &amp; grants</span><h2 class="display h-md">Heavily subsidised through donor support.</h2><p>STRIVELABS INITIATIVE is a non-profit. Tuition for accepted students is heavily subsidised; the application asks about your financial situation so we can match you to the right level of aid.</p><p>Every student who completes receives a <strong>$1,000 capstone seed grant</strong>. Top capstone presentations are eligible for additional support and introductions to BDF, Inkomoko, and Hanga Pitchfest.</p><a onclick="showPage('apply')" class="btn btn--gold" style="margin-top:8px;display:inline-block">Apply now</a></div></div></div></section>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><span class="logo-f"><span>STRIVELABS</span> &middot; CULINARY &times; DIGITAL</span><p>A six-month program for graduates of Rwandan culinary schools. Built and run by STRIVELABS INITIATIVE in Kigali.</p></div><div><h5>Program</h5><ul><li><a onclick="showPage('program')">How it works</a></li><li><a onclick="showPage('curriculum')">Curriculum</a></li><li><a onclick="showPage('books')">Books &amp; media</a></li><li><a onclick="showPage('team')">Faculty &amp; mentors</a></li></ul></div><div><h5>Get involved</h5><ul><li><a onclick="showPage('apply')">Apply as a student</a></li><li><a onclick="showPage('team')">Become a mentor</a></li><li><a onclick="showPage('visits')">Site visits</a></li><li><a onclick="showPage('capstone')">Capstone showcase</a></li></ul></div><div><h5>Contact</h5><ul><li><a href="mailto:info@strivelabs.org">info@strivelabs.org</a></li><li>Mon&ndash;Fri, 8am&ndash;6pm CAT</li><li><a onclick="showPage('contact')">Visit us</a></li></ul></div></div><div class="footer-bottom"><span>&copy; STRIVELABS INITIATIVE &mdash; Kigali, Rwanda</span><span>Culinary Entrepreneurship &amp; Digital Skills Program</span></div></div></footer>
+</div>
+
+<!-- CURRICULUM -->
+<div id="page-curriculum" class="page-section">
+<div class="sph"><div class="sph__bg" style="background-image:url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80')"></div><div class="sph__overlay"></div><div class="sph__c"><span class="eyebrow">The curriculum</span><h1>Six months,<br>month by month.</h1></div></div>
+<section><div class="container-narrow"><p class="slede" style="text-align:center">Each month builds on the one before. The first three are about the business &mdash; foundations, costing, brand. The next three are about the business in motion &mdash; operations, hospitality, launch.</p></div></section>
+<section class="tight"><div class="container"><div class="months">
+  <div class="month"><div class="month__num">&mdash; Month 01</div><div><h3 class="month__title">Foundations</h3><p class="month__tagline">Look around. Before we plan anything, we look at what already exists.</p></div><div class="month__body"><p><strong>Topics:</strong> restaurant types and business models, profit structures and revenue streams, the delivery economy and ghost kitchens.</p><p><strong>Restaurant types covered:</strong> fast food, casual dining, fine dining, street food, catering, delivery-only kitchens.</p><p><strong>By end of month:</strong> business name registered or filed at RDB, capstone track chosen, first one-page concept pitch submitted.</p></div></div>
+  <div class="month"><div class="month__num">&mdash; Month 02</div><div><h3 class="month__title">Menu Costing &amp; Engineering</h3><p class="month__tagline">The single most important number in food. Get it right or be quietly bankrupt.</p></div><div class="month__body"><p><strong>Topics:</strong> food cost percentage, markup pricing, break-even analysis, portion control, supplier cost management. The Kasavana&ndash;Smith menu engineering matrix becomes a tool you will use for years.</p><p><strong>Woven in:</strong> nutrition and allergen literacy across Weeks 7 and 8 &mdash; designing menus for guests with peanut, tree-nut, dairy, egg, soy, wheat, fish, and shellfish allergies, and balanced plates for children, athletes, and elderly customers.</p><p><strong>By end of month:</strong> ten menu items costed at real prices, twelve-month sourcing calendar built, real supplier negotiation completed.</p></div></div>
+  <div class="month"><div class="month__num">&mdash; Month 03</div><div><h3 class="month__title">Menu Design &amp; Branding</h3><p class="month__tagline">Your menu is your top salesperson. Pay them well. Train them.</p></div><div class="month__body"><p><strong>Topics:</strong> pricing psychology, visual hierarchy, customer decision behavior, brand positioning, trilingual menu design (Kinyarwanda, English, French), digital presence on Instagram, TikTok, WhatsApp Business, Google Business Profile.</p><p><strong>By end of month:</strong> locked brand identity (name, logo, colors, typography), trilingual menu in Canva, thirty-day social content calendar with the first week shot and posted.</p></div></div>
+  <div class="month"><div class="month__num">&mdash; Month 04</div><div><h3 class="month__title">Kitchen Management</h3><p class="month__tagline">Set up before you start. Then start clean. Then finish what you started.</p></div><div class="month__body"><p>Built around Dan Charnas's <em>Work Clean</em>.</p><p><strong>Topics:</strong> mise-en-place systems, prep lists, inventory control, waste reduction, food safety and HACCP, brigade systems for small Rwandan kitchens. Date Code Genie certification this month.</p><p><strong>By end of month:</strong> full HACCP plan for your capstone, two real prep services completed, kitchen role rotation across prep, line, and expedite.</p></div></div>
+  <div class="month"><div class="month__num">&mdash; Month 05</div><div><h3 class="month__title">Leadership &amp; Hospitality</h3><p class="month__tagline">Service is what you do. Hospitality is how you make people feel.</p></div><div class="month__body"><p>Built around Will Guidara's <em>Unreasonable Hospitality</em> and Danny Meyer's <em>Setting the Table</em>.</p><p><strong>Topics:</strong> hospitality mindset, guest experience design, emotional intelligence, service culture, hiring for the right traits, leading a Rwandan team within Rwandan labour and privacy law.</p><p><strong>By end of month:</strong> complete hospitality and service system plan, ten service standards, daily lineup template, customer journey map, real mock service with twelve live guests.</p></div></div>
+  <div class="month"><div class="month__num">&mdash; Month 06</div><div><h3 class="month__title">Launch &amp; Capstone</h3><p class="month__tagline">The work of six months becomes a real launch.</p></div><div class="month__body"><p><strong>Topics:</strong> capital and financing in Rwanda (BDF, Inkomoko, Hanga Pitchfest), pre-opening compliance, RSSB and PAYE, sustainability and packaging under Rwanda's plastic ban (Law N&deg; 17/2019), full food labeling specification.</p><p><strong>By end of month:</strong> locked launch schedule, twelve-month cash flow forecast, ten-slide pitch deck, capstone presentation to a panel of judges, real soft launch event with twenty-five guests on the final Friday.</p></div></div>
+</div></div></section>
+<section class="sand"><div class="container-narrow"><span class="eyebrow-dark">Required reading</span><h2 class="display h-md" style="margin:14px 0 20px">Four books carry the program.</h2><ul class="checks"><li><strong>Setting the Table</strong> &mdash; Danny Meyer (Months 1&ndash;4)</li><li><strong>Unreasonable Hospitality</strong> &mdash; Will Guidara (Month 5)</li><li><strong>Work Clean</strong> &mdash; Dan Charnas (Month 4)</li><li><strong>Restaurant Success by the Numbers</strong> &mdash; Roger Fields (Months 1 and 6)</li></ul><p style="margin-top:24px"><a onclick="showPage('books')" class="btn btn--dark" style="display:inline-block">See the full books page</a></p></div></section>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><span class="logo-f"><span>STRIVELABS</span> &middot; CULINARY &times; DIGITAL</span><p>A six-month program for graduates of Rwandan culinary schools. Built and run by STRIVELABS INITIATIVE in Kigali.</p></div><div><h5>Program</h5><ul><li><a onclick="showPage('program')">How it works</a></li><li><a onclick="showPage('curriculum')">Curriculum</a></li><li><a onclick="showPage('books')">Books &amp; media</a></li><li><a onclick="showPage('team')">Faculty &amp; mentors</a></li></ul></div><div><h5>Get involved</h5><ul><li><a onclick="showPage('apply')">Apply as a student</a></li><li><a onclick="showPage('team')">Become a mentor</a></li><li><a onclick="showPage('visits')">Site visits</a></li><li><a onclick="showPage('capstone')">Capstone showcase</a></li></ul></div><div><h5>Contact</h5><ul><li><a href="mailto:info@strivelabs.org">info@strivelabs.org</a></li><li>Mon&ndash;Fri, 8am&ndash;6pm CAT</li><li><a onclick="showPage('contact')">Visit us</a></li></ul></div></div><div class="footer-bottom"><span>&copy; STRIVELABS INITIATIVE &mdash; Kigali, Rwanda</span><span>Culinary Entrepreneurship &amp; Digital Skills Program</span></div></div></footer>
+</div>
+
+<!-- BOOKS -->
+<div id="page-books" class="page-section">
+<div class="sph"><div class="sph__bg" style="background-image:url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1600&q=80')"></div><div class="sph__overlay"></div><div class="sph__c"><span class="eyebrow">The reading shelf</span><h1>Books, talks, and tools we use.</h1></div></div>
+<section><div class="container-narrow"><p class="slede" style="text-align:center">Anything we use in class is here, with links to the source. Reading two or three of these will tell you whether the program is right for you.</p></div></section>
+<section class="tight"><div class="container">
+  <div class="book"><div class="book__num">&mdash; 01</div><div><div class="book__title">Setting the Table</div><div class="book__author">Danny Meyer</div><p>The book on hospitality. Meyer's 51 percent rule (hire for emotional skills, train for technical) shapes how we hire and lead.</p><a class="book__where" href="https://archive.org/details/settingtabletran00meye" target="_blank">Free borrow on Internet Archive &rarr;</a></div></div>
+  <div class="book"><div class="book__num">&mdash; 02</div><div><div class="book__title">Unreasonable Hospitality</div><div class="book__author">Will Guidara</div><p>The 95/5 rule: tight discipline 95 percent of the time so you can spend foolishly on hospitality the other 5 percent. We read this across Month 5.</p><a class="book__where" href="https://www.unreasonablehospitality.com" target="_blank">Publisher site &rarr;</a></div></div>
+  <div class="book"><div class="book__num">&mdash; 03</div><div><div class="book__title">Work Clean</div><div class="book__author">Dan Charnas</div><p>The ten ingredients of mise-en-place applied to running a business. The Daily Meeze practice we follow throughout the program comes from this book.</p><a class="book__where" href="https://www.workclean.com" target="_blank">Author site &rarr;</a></div></div>
+  <div class="book"><div class="book__num">&mdash; 04</div><div><div class="book__title">Restaurant Success by the Numbers</div><div class="book__author">Roger Fields</div><p>The only one of the five written by an accountant who became a restaurateur. The financial spine of Months 1 and 6.</p></div></div>
+</div></section>
+<section class="sand"><div class="container-narrow"><span class="eyebrow-dark">Tools we teach</span><h2 class="display h-md" style="margin:14px 0 20px">Every tool here is free or has a free tier.</h2><ul class="checks"><li><strong>Google Workspace</strong> &mdash; for everything written, calculated, scheduled, or shared.</li><li><strong>Canva</strong> &mdash; for menus, logos, social content. Free for nonprofits and education.</li><li><strong>WhatsApp Business</strong> &mdash; for customer service, simple ordering, supplier coordination.</li><li><strong>CapCut</strong> &mdash; for short-form video editing on phone.</li><li><strong>DateCodeGenie</strong> &mdash; for food safety labelling and date coding.</li><li><strong>Claude (Anthropic)</strong> &mdash; for AI-assisted research, drafting, translation; with always-on human verification.</li></ul></div></section>
+<section><div class="container-narrow"><span class="eyebrow-dark">Watch</span><h2 class="display h-md" style="margin:14px 0 20px">Three talks we revisit.</h2><ul class="checks"><li><strong>Will Guidara &mdash; TED Talk on hospitality.</strong> Search &ldquo;Will Guidara secret ingredients of great hospitality&rdquo; on ted.com.</li><li><strong>Dan Charnas &mdash; The Ingredients of Working Clean.</strong> youtube.com/watch?v=AzkvXYcDsec</li><li><strong>Date Code Genie demo.</strong> youtube.com/watch?v=yQmyAIzSOTA</li></ul></div></section>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><span class="logo-f"><span>STRIVELABS</span> &middot; CULINARY &times; DIGITAL</span><p>A six-month program for graduates of Rwandan culinary schools. Built and run by STRIVELABS INITIATIVE in Kigali.</p></div><div><h5>Program</h5><ul><li><a onclick="showPage('program')">How it works</a></li><li><a onclick="showPage('curriculum')">Curriculum</a></li><li><a onclick="showPage('books')">Books &amp; media</a></li><li><a onclick="showPage('team')">Faculty &amp; mentors</a></li></ul></div><div><h5>Get involved</h5><ul><li><a onclick="showPage('apply')">Apply as a student</a></li><li><a onclick="showPage('team')">Become a mentor</a></li><li><a onclick="showPage('visits')">Site visits</a></li><li><a onclick="showPage('capstone')">Capstone showcase</a></li></ul></div><div><h5>Contact</h5><ul><li><a href="mailto:info@strivelabs.org">info@strivelabs.org</a></li><li>Mon&ndash;Fri, 8am&ndash;6pm CAT</li><li><a onclick="showPage('contact')">Visit us</a></li></ul></div></div><div class="footer-bottom"><span>&copy; STRIVELABS INITIATIVE &mdash; Kigali, Rwanda</span><span>Culinary Entrepreneurship &amp; Digital Skills Program</span></div></div></footer>
+</div>
+
+<!-- TEAM -->
+<div id="page-team" class="page-section">
+<div class="sph"><div class="sph__bg" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80')"></div><div class="sph__overlay"></div><div class="sph__c"><span class="eyebrow">The team</span><h1>The people who teach you.</h1></div></div>
+<section><div class="container-narrow"><p class="slede" style="text-align:center">Two kinds of people teach in this program.</p><div style="margin:32px auto;display:grid;grid-template-columns:1fr;gap:22px;max-width:660px"><div style="display:grid;grid-template-columns:115px 1fr;gap:16px;align-items:start"><span class="ltag" style="color:var(--gold)">Facilitators</span><p style="margin:0">Daily guidance as you work through the program &mdash; Monday through Friday, week after week.</p></div><div style="display:grid;grid-template-columns:115px 1fr;gap:16px;align-items:start"><span class="ltag" style="color:var(--gold)">Mentors</span><p style="margin:0">Perspective from inside a real business &mdash; once a month, one-on-one.</p></div></div></div></section>
+<section class="sand"><div class="container"><div style="margin-bottom:34px"><span class="eyebrow-dark">Facilitators</span><h2 class="display h-md" style="margin-top:12px">The people in the room every day.</h2></div><div class="profile-grid"><div class="profile"><div class="profile__photo"><span class="ph-label">PHOTO</span></div><div><div class="profile__name">[Facilitator name]</div><div class="profile__role">Lead facilitator</div><p class="profile__bio">[Two to four sentences. Background, what they bring, what students often say about them.]</p></div></div><div class="profile"><div class="profile__photo"><span class="ph-label">PHOTO</span></div><div><div class="profile__name">[Facilitator name]</div><div class="profile__role">Kitchen lead</div><p class="profile__bio">[Two to four sentences.]</p></div></div><div class="profile"><div class="profile__photo"><span class="ph-label">PHOTO</span></div><div><div class="profile__name">[Facilitator name]</div><div class="profile__role">Hospitality coach</div><p class="profile__bio">[Two to four sentences.]</p></div></div></div></div></section>
+<section><div class="container"><div class="split"><div class="split__image" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80')"></div><div class="split__text"><span class="eyebrow-gold">Industry mentors</span><h2 class="display h-md">Eight working Kigali food entrepreneurs.</h2><p>Each cohort is paired with eight industry mentors &mdash; working chefs, restaurant owners, food product founders, hotel F&amp;B managers, packaging suppliers. One mentor per student, monthly meetings in the mentor's place of work, for the full six months.</p><p>Mentors are not paid. They give time because they remember being where you are.</p></div></div></div></section>
+<section class="paper-warm"><div class="container"><div style="margin-bottom:34px"><span class="eyebrow-dark">Past mentors</span><h2 class="display h-md" style="margin-top:12px">A small, mighty network.</h2><p style="margin-top:12px">Once mentors agree to be named publicly, list them here. Update each cohort.</p></div><div class="profile-grid"><div class="profile"><div class="profile__photo"><span class="ph-label">PHOTO</span></div><div><div class="profile__name">[Mentor name]</div><div class="profile__role">Owner, [Restaurant] &middot; [Neighbourhood]</div></div></div><div class="profile"><div class="profile__photo"><span class="ph-label">PHOTO</span></div><div><div class="profile__name">[Mentor name]</div><div class="profile__role">Founder, [Food product brand]</div></div></div><div class="profile"><div class="profile__photo"><span class="ph-label">PHOTO</span></div><div><div class="profile__name">[Mentor name]</div><div class="profile__role">Head Chef, [Hotel name]</div></div></div></div></div></section>
+<section class="deep"><div class="container-narrow" style="text-align:center"><span class="eyebrow">Become a mentor</span><h2 class="display h-lg" style="margin:18px 0 20px">Run a food business in Kigali?</h2><p class="slede" style="margin:0 auto 26px;max-width:560px">Mentor a student in the next cohort. One meeting a month, sixty to ninety minutes, for six months.</p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfaXS-IwGfSN2-LADLbsiaREW8UN_w4IkBV6nvCPlatKpGxvQ/viewform?usp=publish-editor" class="btn btn--gold">Apply to be a mentor</a></div></section>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><span class="logo-f"><span>STRIVELABS</span> &middot; CULINARY &times; DIGITAL</span><p>A six-month program for graduates of Rwandan culinary schools. Built and run by STRIVELABS INITIATIVE in Kigali.</p></div><div><h5>Program</h5><ul><li><a onclick="showPage('program')">How it works</a></li><li><a onclick="showPage('curriculum')">Curriculum</a></li><li><a onclick="showPage('books')">Books &amp; media</a></li><li><a onclick="showPage('team')">Faculty &amp; mentors</a></li></ul></div><div><h5>Get involved</h5><ul><li><a onclick="showPage('apply')">Apply as a student</a></li><li><a onclick="showPage('team')">Become a mentor</a></li><li><a onclick="showPage('visits')">Site visits</a></li><li><a onclick="showPage('capstone')">Capstone showcase</a></li></ul></div><div><h5>Contact</h5><ul><li><a href="mailto:info@strivelabs.org">info@strivelabs.org</a></li><li>Mon&ndash;Fri, 8am&ndash;6pm CAT</li><li><a onclick="showPage('contact')">Visit us</a></li></ul></div></div><div class="footer-bottom"><span>&copy; STRIVELABS INITIATIVE &mdash; Kigali, Rwanda</span><span>Culinary Entrepreneurship &amp; Digital Skills Program</span></div></div></footer>
+</div>
+
+<!-- SITE VISITS -->
+<div id="page-visits" class="page-section">
+<div class="sph"><div class="sph__bg" style="background-image:url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1600&q=80')"></div><div class="sph__overlay"></div><div class="sph__c"><span class="eyebrow">Site visits</span><h1>Site visits to<br>industry experts.</h1></div></div>
+<section><div class="container-narrow"><p class="slede" style="text-align:center">Site visits expose students to real industry experts in their place of work &mdash; restaurants, hotels, packaging suppliers, cooperatives, RSB-certified producers.</p></div></section>
+<section class="sand"><div class="container-narrow"><span class="eyebrow-dark">For students</span><h2 class="display h-md" style="margin:14px 0 20px">Five working days ahead.</h2><p>Complete the Site Visit Request form at least five working days before the visit. The form covers permission, funding, and (if you are under eighteen) parental consent and chaperone assignment.</p><p style="margin-bottom:26px">The coordinator responds within three working days.</p><a href="https://docs.google.com/forms/d/e/1FAIpQLScAQ6BySlIg2GsZ2qz7_X2RFZhjBEOfGMvSCmCwix7bXjQJGw/viewform?usp=publish-editor" class="btn btn--dark" style="display:inline-block">Open the Site Visit Request form &rarr;</a></div></section>
+<section><div class="container-narrow"><span class="eyebrow-dark">For industry hosts</span><h2 class="display h-md" style="margin:14px 0 20px">If a student asks to visit you, here is what to expect.</h2><ul class="checks"><li>The student will contact you ahead with a short email &mdash; what they want to learn and three specific questions.</li><li>Most visits are sixty to ninety minutes: about forty-five minutes of observation, fifteen to thirty minutes of questions.</li><li>Students bring a notebook and ask permission before photographs.</li><li>If the student is under eighteen, an SLI chaperone accompanies them for the entire visit.</li><li>Students write a one-page reflection shared with their cohort, not a public review of your business.</li></ul><p class="slede" style="margin-top:32px">If you cannot host that day, please reply (even briefly). Students learn as much from a kind decline as from a yes.</p></div></section>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><span class="logo-f"><span>STRIVELABS</span> &middot; CULINARY &times; DIGITAL</span><p>A six-month program for graduates of Rwandan culinary schools. Built and run by STRIVELABS INITIATIVE in Kigali.</p></div><div><h5>Program</h5><ul><li><a onclick="showPage('program')">How it works</a></li><li><a onclick="showPage('curriculum')">Curriculum</a></li><li><a onclick="showPage('books')">Books &amp; media</a></li><li><a onclick="showPage('team')">Faculty &amp; mentors</a></li></ul></div><div><h5>Get involved</h5><ul><li><a onclick="showPage('apply')">Apply as a student</a></li><li><a onclick="showPage('team')">Become a mentor</a></li><li><a onclick="showPage('visits')">Site visits</a></li><li><a onclick="showPage('capstone')">Capstone showcase</a></li></ul></div><div><h5>Contact</h5><ul><li><a href="mailto:info@strivelabs.org">info@strivelabs.org</a></li><li>Mon&ndash;Fri, 8am&ndash;6pm CAT</li><li><a onclick="showPage('contact')">Visit us</a></li></ul></div></div><div class="footer-bottom"><span>&copy; STRIVELABS INITIATIVE &mdash; Kigali, Rwanda</span><span>Culinary Entrepreneurship &amp; Digital Skills Program</span></div></div></footer>
+</div>
+
+<!-- CAPSTONE -->
+<div id="page-capstone" class="page-section">
+<div class="sph"><div class="sph__bg" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80')"></div><div class="sph__overlay"></div><div class="sph__c"><span class="eyebrow">Capstone day</span><h1>The capstone<br>showcase.</h1></div></div>
+<section><div class="container-narrow"><p class="slede" style="text-align:center">Every cohort ends with Capstone Day: morning pitches to a panel, afternoon soft launch with twenty-five guests.</p><p style="text-align:center;margin-top:13px;color:var(--ink-soft)">This page is where we share what came out of each cohort.</p></div></section>
+<section class="sand"><div class="container"><span class="eyebrow-dark">Most recent cohort</span><h2 class="display h-md" style="margin:14px 0 44px">Capstone projects.</h2><div class="profile-grid"><div class="profile"><div class="profile__photo"><span class="ph-label">PHOTO</span></div><div><div class="profile__name">[Business name]</div><div class="profile__role">Founder: [Student] &middot; Track: [Capstone track]</div><p class="profile__bio" style="margin-top:10px">[Two to three sentences describing the business in the founder's own words.]</p></div></div><div class="profile"><div class="profile__photo"><span class="ph-label">PHOTO</span></div><div><div class="profile__name">[Business name]</div><div class="profile__role">Founder: [Student] &middot; Track: [Capstone track]</div><p class="profile__bio" style="margin-top:10px">[Two to three sentences.]</p></div></div><div class="profile"><div class="profile__photo"><span class="ph-label">PHOTO</span></div><div><div class="profile__name">[Business name]</div><div class="profile__role">Founder: [Student] &middot; Track: [Capstone track]</div><p class="profile__bio" style="margin-top:10px">[Two to three sentences.]</p></div></div></div></div></section>
+<section><div class="container-narrow"><span class="eyebrow-dark">Past cohorts</span><h2 class="display h-md" style="margin:14px 0 16px">An archive that grows with each cohort.</h2><p>As cohorts complete the program, this section grows. Each year is its own subsection.</p></div></section>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><span class="logo-f"><span>STRIVELABS</span> &middot; CULINARY &times; DIGITAL</span><p>A six-month program for graduates of Rwandan culinary schools. Built and run by STRIVELABS INITIATIVE in Kigali.</p></div><div><h5>Program</h5><ul><li><a onclick="showPage('program')">How it works</a></li><li><a onclick="showPage('curriculum')">Curriculum</a></li><li><a onclick="showPage('books')">Books &amp; media</a></li><li><a onclick="showPage('team')">Faculty &amp; mentors</a></li></ul></div><div><h5>Get involved</h5><ul><li><a onclick="showPage('apply')">Apply as a student</a></li><li><a onclick="showPage('team')">Become a mentor</a></li><li><a onclick="showPage('visits')">Site visits</a></li><li><a onclick="showPage('capstone')">Capstone showcase</a></li></ul></div><div><h5>Contact</h5><ul><li><a href="mailto:info@strivelabs.org">info@strivelabs.org</a></li><li>Mon&ndash;Fri, 8am&ndash;6pm CAT</li><li><a onclick="showPage('contact')">Visit us</a></li></ul></div></div><div class="footer-bottom"><span>&copy; STRIVELABS INITIATIVE &mdash; Kigali, Rwanda</span><span>Culinary Entrepreneurship &amp; Digital Skills Program</span></div></div></footer>
+</div>
+
+<!-- APPLY -->
+<div id="page-apply" class="page-section">
+<div class="sph"><div class="sph__bg" style="background-image:url('https://images.unsplash.com/photo-1495195134817-aeb325a55b65?auto=format&fit=crop&w=1600&q=80')"></div><div class="sph__overlay"></div><div class="sph__c"><span class="eyebrow">Apply</span><h1>Apply for the<br>next cohort.</h1></div></div>
+<section><div class="container-narrow"><p class="slede" style="text-align:center">The application takes about thirty minutes.</p><p style="text-align:center;margin-top:13px;color:var(--ink-soft)">After you submit, you will hear from us within two weeks. Shortlisted applicants are invited to a thirty-minute conversation with a facilitator.</p></div></section>
+<section class="sand"><div class="container-narrow"><span class="eyebrow-dark">Eligibility</span><h2 class="display h-md" style="margin:14px 0 20px">To apply, you should be:</h2><ul class="checks"><li>A graduate of a recognised technical culinary school in Rwanda, or have equivalent professional kitchen experience.</li><li>Available Mon&ndash;Fri for six months (AM cohort 8 AM &ndash; 1 PM, or PM cohort 1 PM &ndash; 6 PM).</li><li>Equipped with a smartphone and a computer (laptop ideally &mdash; the program uses spreadsheets and design tools).</li><li>Able to read and write in English; strong Kinyarwanda; ideally some French.</li><li>Sixteen or older. Applicants under eighteen include parental consent in their application.</li></ul></div></section>
+<section><div class="container-narrow"><span class="eyebrow-dark">What we ask</span><h2 class="display h-md" style="margin:14px 0 20px">One Google Form, five sections.</h2><ul class="detail-list"><li><h4>01 &mdash; About you</h4><p>Basic contact and background.</p></li><li><h4>02 &mdash; Culinary training and work experience</h4><p>Where you trained, where you have worked.</p></li><li><h4>03 &mdash; Your business idea</h4><p>Even rough is fine.</p></li><li><h4>04 &mdash; Why this program, in your own words</h4><p>The most important section. Be specific.</p></li><li><h4>05 &mdash; Financial situation and any aid you would need</h4><p>Honest answers help us match you to the right level of subsidy.</p></li></ul></div></section>
+<section class="deep"><div class="container-narrow" style="text-align:center"><span class="eyebrow">Ready</span><h2 class="display h-lg" style="margin:18px 0 20px">Open the application.</h2><p class="slede" style="margin:0 auto 26px;max-width:560px">The form lives in Google Forms. Allow about thirty minutes of focused time.</p><div class="btn-row"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeqZ2E4VPaMlTk2yJRuDE2c-NNc1GQ7t-GptN689VrCC-BYDw/viewform?usp=dialog" class="btn btn--gold">Open the application form &rarr;</a></div><p style="margin-top:38px;color:rgba(250,250,247,0.7);font-size:0.985rem">Questions before you apply? Email <a href="mailto:info@strivelabs.org" style="border-bottom:3px solid var(--gold-soft);color:var(--gold-soft)">info@strivelabs.org</a> &mdash; we reply within three working days.</p></div></section>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><span class="logo-f"><span>STRIVELABS</span> &middot; CULINARY &times; DIGITAL</span><p>A six-month program for graduates of Rwandan culinary schools. Built and run by STRIVELABS INITIATIVE in Kigali.</p></div><div><h5>Program</h5><ul><li><a onclick="showPage('program')">How it works</a></li><li><a onclick="showPage('curriculum')">Curriculum</a></li><li><a onclick="showPage('books')">Books &amp; media</a></li><li><a onclick="showPage('team')">Faculty &amp; mentors</a></li></ul></div><div><h5>Get involved</h5><ul><li><a onclick="showPage('apply')">Apply as a student</a></li><li><a onclick="showPage('team')">Become a mentor</a></li><li><a onclick="showPage('visits')">Site visits</a></li><li><a onclick="showPage('capstone')">Capstone showcase</a></li></ul></div><div><h5>Contact</h5><ul><li><a href="mailto:info@strivelabs.org">info@strivelabs.org</a></li><li>Mon&ndash;Fri, 8am&ndash;6pm CAT</li><li><a onclick="showPage('contact')">Visit us</a></li></ul></div></div><div class="footer-bottom"><span>&copy; STRIVELABS INITIATIVE &mdash; Kigali, Rwanda</span><span>Culinary Entrepreneurship &amp; Digital Skills Program</span></div></div></footer>
+</div>
+
+<!-- CONTACT -->
+<div id="page-contact" class="page-section">
+<div class="sph"><div class="sph__bg" style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80')"></div><div class="sph__overlay"></div><div class="sph__c"><span class="eyebrow">Contact</span><h1>Get in touch.</h1></div></div>
+<section><div class="container"><div class="contact-grid"><div><div class="contact-block" style="margin-bottom:30px"><h4>STRIVELABS INITIATIVE</h4><p>Kigali, Rwanda</p><p>Rwezamenyo Sector</p></div><div class="contact-block" style="margin-bottom:30px"><h4>Email</h4><p><a href="mailto:info@strivelabs.org">info@strivelabs.org</a></p><p style="font-size:0.985rem;color:var(--ink-soft);margin-top:5px">Replied Mon&ndash;Fri, 8 AM &ndash; 6 PM Kigali time. Weekend messages: reply by Tuesday.</p></div><div class="contact-block"><h4>WhatsApp</h4><p>[(202) xxx - xxxx]</p></div></div><div><h4 class="eyebrow-dark" style="margin-bottom:14px">Where to direct different inquiries</h4><ul class="detail-list"><li><h4>Program applications</h4><p>See the <a onclick="showPage('apply')" style="color:var(--green-deep);border-bottom:1px solid var(--gold);cursor:pointer">Apply</a> page.</p></li><li><h4>Mentor applications</h4><p>See the <a onclick="showPage('team')" style="color:var(--green-deep);border-bottom:1px solid var(--gold);cursor:pointer">Faculty &amp; Mentors</a> page.</p></li><li><h4>Site visit hosting</h4><p>See the <a onclick="showPage('visits')" style="color:var(--green-deep);border-bottom:1px solid var(--gold);cursor:pointer">Site Visits</a> page.</p></li><li><h4>Donor inquiries</h4><p><a href="mailto:info@strivelabs.org?subject=Donor%20inquiry">info@strivelabs.org</a> with subject &ldquo;Donor inquiry&rdquo;.</p></li><li><h4>Press inquiries</h4><p><a href="mailto:info@strivelabs.org?subject=Press%20inquiry">info@strivelabs.org</a> with subject &ldquo;Press inquiry&rdquo;.</p></li></ul></div></div></div></section>
+<section class="sand"><div class="container-narrow"><span class="eyebrow-dark">Where we are</span><h2 class="display h-md" style="margin:14px 0 20px">Find us in Kigali.</h2><div style="aspect-ratio:16/9;background:var(--rule);display:flex;align-items:center;justify-content:center;font-family:var(--label);font-size:0.795rem;letter-spacing:0.2em;color:var(--green-deep);text-align:center;padding:18px">[GOOGLE MAP]</div></div></section>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><span class="logo-f"><span>STRIVELABS</span> &middot; CULINARY &times; DIGITAL</span><p>A six-month program for graduates of Rwandan culinary schools. Built and run by STRIVELABS INITIATIVE in Kigali.</p></div><div><h5>Program</h5><ul><li><a onclick="showPage('program')">How it works</a></li><li><a onclick="showPage('curriculum')">Curriculum</a></li><li><a onclick="showPage('books')">Books &amp; media</a></li><li><a onclick="showPage('team')">Faculty &amp; mentors</a></li></ul></div><div><h5>Get involved</h5><ul><li><a onclick="showPage('apply')">Apply as a student</a></li><li><a onclick="showPage('team')">Become a mentor</a></li><li><a onclick="showPage('visits')">Site visits</a></li><li><a onclick="showPage('capstone')">Capstone showcase</a></li></ul></div><div><h5>Contact</h5><ul><li><a href="mailto:info@strivelabs.org">info@strivelabs.org</a></li><li>Mon&ndash;Fri, 8am&ndash;6pm CAT</li><li><a onclick="showPage('contact')">Visit us</a></li></ul></div></div><div class="footer-bottom"><span>&copy; STRIVELABS INITIATIVE &mdash; Kigali, Rwanda</span><span>Culinary Entrepreneurship &amp; Digital Skills Program</span></div></div></footer>
+</div>
+
+</div><!-- /page-wrap -->
+
+<script>
+function toggleMenu(){
+  var nav=document.getElementById('siteNav');
+  var btn=document.getElementById('navToggle');
+  var open=nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded',open?'true':'false');
+  btn.setAttribute('aria-label',open?'Close menu':'Open menu');
+}
+function closeMenu(){
+  var nav=document.getElementById('siteNav');
+  var btn=document.getElementById('navToggle');
+  nav.classList.remove('open');
+  if(btn){btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Open menu')}
+}
+function showPage(id){
+  document.querySelectorAll('.page-section').forEach(function(s){s.classList.remove('active')});
+  document.querySelectorAll('.nav-links a').forEach(function(a){a.classList.remove('active-page')});
+  var t=document.getElementById('page-'+id);
+  var n=document.getElementById('nav-'+id);
+  if(t){t.classList.add('active')}
+  if(n){n.classList.add('active-page')}
+  closeMenu();
+  document.querySelector('.page-wrap').scrollTop=0;
+  window.scrollTo(0,0);
+}
+/* Close the mobile menu if the viewport grows back to desktop */
+window.addEventListener('resize',function(){
+  if(window.innerWidth>860){closeMenu()}
+});
+</script>
+</body>
+</html>
